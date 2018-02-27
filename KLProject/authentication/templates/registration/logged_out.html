@@ -1,0 +1,12 @@
+{% extends 'authentication/base.html' %}
+
+{% block title %}<title>Logout</title> {% endblock %}
+
+{% block body %}
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<h1>Successfully Logged Out</h1>
+			<p>Click <a href="{% url 'authentication:login' %}">here</a> to log in again.</p>
+		</div>
+	</div>
+{% endblock %}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'authentication.apps.AuthenticationConfig',
+    'intakeForm.apps.IntakeformConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,3 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#URL to redirect to after login if contrib.auth.views.login gets no parameter
+LOGIN_REDIRECT_URL = reverse_lazy('authentication:dashboard')
+
+#URL to redirect user to log in
+LOGIN_URL = reverse_lazy('authentication:login')
+
+#URL to redirect user to log out
+LOGOUT_URL = reverse_lazy('authentication:logout')
